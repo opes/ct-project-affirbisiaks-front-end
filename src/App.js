@@ -24,7 +24,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log('Checking State again', this.state.token);
     return (
     <Router>
       <Header />
