@@ -10,12 +10,13 @@ import Header from './Components/Header';
 import Dashboard from './Components/Dashboard';
 import About from './Components/About';
 import Main from './Components/Main';
+import CreateAccount from './Components/CreateAccount';
 
 export default class App extends Component {
 
   state = {
-    token: ''
-    
+    token: '',
+    user: '', 
   }
 
   handleSetsToken = async (token) => {
@@ -28,9 +29,12 @@ export default class App extends Component {
     <Router>
       <Header />
       <Switch>
-        <Route exact path= '/' render={(routerProps) => <Main {...routerProps} event={this.handleSetsToken} />} />
-        
-        <Route exact path= '/dashboard' render={(routerProps) => <Dashboard {...routerProps} />} />
+        <Route exact path= '/' render={(routerProps) => !this.state.token 
+          ? <Main {...routerProps} event={this.handleSetsToken} /> 
+          : !this.state.user
+          ? <CreateAccount {...routerProps} />
+          : <Dashboard {...routerProps} />
+          } />
         
         <Route exact path= '/about' component={About} />
         
