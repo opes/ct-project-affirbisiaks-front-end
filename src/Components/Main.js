@@ -7,13 +7,14 @@ const responseGoogle = (response) => {
 
 export default class Main extends Component {
   render() {
-    console.log('CLIENT IDDDDDDDD', process.env.REACT_APP_CLIENT_ID)
     return (
       <div>
       <GoogleLogin
     clientId={process.env.REACT_APP_CLIENT_ID}
     buttonText="Login"
-    onSuccess={responseGoogle}
+    onSuccess={ (token) => {
+      console.log('Anything here'); 
+      this.props.event(token)} }
     onFailure={responseGoogle}
     cookiePolicy={'single_host_origin'}
   />

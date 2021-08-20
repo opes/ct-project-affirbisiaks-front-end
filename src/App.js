@@ -12,12 +12,23 @@ import About from './Components/About';
 import Main from './Components/Main';
 
 export default class App extends Component {
+
+  state = {
+    token: ''
+    
+  }
+
+  handleSetsToken = async (token) => {
+    await this.setState({ token: token });
+  }
+
   render() {
+    console.log('Checking State again', this.state.token);
     return (
     <Router>
       <Header />
       <Switch>
-        <Route exact path= '/' render={(routerProps) => <Main {...routerProps} />} />
+        <Route exact path= '/' render={(routerProps) => <Main {...routerProps} event={this.handleSetsToken} />} />
         
         <Route exact path= '/dashboard' render={(routerProps) => <Dashboard {...routerProps} />} />
         
