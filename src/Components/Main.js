@@ -13,8 +13,7 @@ export default class Main extends Component {
     clientId={process.env.REACT_APP_CLIENT_ID}
     buttonText="Login"
     onSuccess={ (token) => {
-      console.log('Anything here'); 
-      this.props.event(token)} }
+      this.props.event(token.profileObj)} }
     onFailure={responseGoogle}
     cookiePolicy={'single_host_origin'}
   />

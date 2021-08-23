@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  // fetch,
   // Redirect
 } from 'react-router-dom';
 import './App.css';
@@ -19,8 +20,18 @@ export default class App extends Component {
     user: '', 
   }
 
-  handleSetsToken = async (token) => {
-    await this.setState({ token: token });
+  handleSetStates = async (profileObj) => {
+    await this.setState({ token: profileObj });
+    //SOME CODE
+    // setting some const equal to a request to backend
+    const headers = { 
+      'Content-Type': 'application/json' 
+    }
+    const userObj = await fetch(`http://localhost:7890/api/v1/users/${profileObj.googleId}`, { headers, mode: 'no-cors' })
+    // .then((res) => res.JSON())
+    .then((data) => console.log('data', data));
+
+    await this.setState({ user: userObj })
   }
 
   render() {
@@ -29,7 +40,7 @@ export default class App extends Component {
       <Header />
       <Switch>
         <Route exact path= '/' render={(routerProps) => !this.state.token 
-          ? <Main {...routerProps} event={this.handleSetsToken} /> 
+          ? <Main {...routerProps} event={this.handleSetStates} /> 
           : !this.state.user
           ? <CreateAccount {...routerProps} />
           : <Dashboard {...routerProps} />
