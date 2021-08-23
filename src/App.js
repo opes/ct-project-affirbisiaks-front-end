@@ -19,8 +19,16 @@ export default class App extends Component {
     user: '', 
   }
 
-  handleSetsToken = async (token) => {
-    await this.setState({ token: token });
+  handleSetStates = async (profileObj) => {
+    await this.setState({ token: profileObj });
+
+    const userObj = await fetch(`http://localhost:7890/api/v1/users/12345`);
+    console.log('USER OBJECT', userObj);
+
+    const data = await userObj.json();
+    console.log('data', data);
+
+    await this.setState({ user: data })
   }
 
   render() {
@@ -29,7 +37,7 @@ export default class App extends Component {
       <Header />
       <Switch>
         <Route exact path= '/' render={(routerProps) => !this.state.token 
-          ? <Main {...routerProps} event={this.handleSetsToken} /> 
+          ? <Main {...routerProps} event={this.handleSetStates} /> 
           : !this.state.user
           ? <CreateAccount {...routerProps} />
           : <Dashboard {...routerProps} />
