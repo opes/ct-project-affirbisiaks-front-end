@@ -11,6 +11,7 @@ import Dashboard from './Components/Dashboard';
 import About from './Components/About';
 import Main from './Components/Main';
 import CreateAccount from './Components/CreateAccount';
+import { signup } from './utils/signup';
 
 export default class App extends Component {
 
@@ -22,24 +23,28 @@ export default class App extends Component {
   handleSetStates = async (profileObj) => {
     await this.setState({ token: profileObj });
 
-    const userObj = await fetch(`http://localhost:7890/api/v1/users/12345`);
-    console.log('USER OBJECT', userObj);
+    const userObj = await fetch(`https://affirbisiaks.herokuapp.com/api/v1/users/${profileObj.googleId}`);
 
     const data = await userObj.json();
-    console.log('data', data);
 
     await this.setState({ user: data })
   }
 
+  handleSetUserState = async (userObj) => {
+    const user = signup(userObj);
+    this.setState({ user })
+  }
+
   render() {
+    console.log('USER STATE!!!!!!!!!!!!!!', this.state.token);
     return (
     <Router>
       <Header />
       <Switch>
         <Route exact path= '/' render={(routerProps) => !this.state.token 
           ? <Main {...routerProps} event={this.handleSetStates} /> 
-          : !this.state.user
-          ? <CreateAccount {...routerProps} />
+          : this.state.user
+          ? <CreateAccount {...routerProps} event={this.handleSetUserState} googleId={this.state.token.googleId}/>
           : <Dashboard {...routerProps} />
           } />
         
