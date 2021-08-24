@@ -7,25 +7,41 @@ import {
 } from 'react-router-dom';
 import './App.css';
 import Header from './Components/Header';
-import Login from './Components/Login';
-import Signup from './Components/Signup';
 import Dashboard from './Components/Dashboard';
 import About from './Components/About';
 import Main from './Components/Main';
+import CreateAccount from './Components/CreateAccount';
 
 export default class App extends Component {
+
+  state = {
+    token: '',
+    user: '', 
+  }
+
+  handleSetStates = async (profileObj) => {
+    await this.setState({ token: profileObj });
+
+    const userObj = await fetch(`http://localhost:7890/api/v1/users/12345`);
+    console.log('USER OBJECT', userObj);
+
+    const data = await userObj.json();
+    console.log('data', data);
+
+    await this.setState({ user: data })
+  }
+
   render() {
     return (
     <Router>
       <Header />
       <Switch>
-        <Route exact path= '/' render={(routerProps) => <Main {...routerProps} />} />
-        
-        <Route exact path= '/login' render={(routerProps) => <Login {...routerProps} />} />
-        
-        <Route exact path= '/signup' render={(routerProps) => <Signup {...routerProps} />} />
-        
-        <Route exact path= '/dashboard' render={(routerProps) => <Dashboard {...routerProps} />} />
+        <Route exact path= '/' render={(routerProps) => !this.state.token 
+          ? <Main {...routerProps} event={this.handleSetStates} /> 
+          : !this.state.user
+          ? <CreateAccount {...routerProps} />
+          : <Dashboard {...routerProps} />
+          } />
         
         <Route exact path= '/about' component={About} />
         
