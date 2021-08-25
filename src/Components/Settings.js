@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-export default class CreateAccount extends Component {
+export default class Settings extends Component {
     state = {
-        name: '',
-        preference: '',
-        phoneNumber: '',
+        name: this.props.user.name,
+        preference: this.props.user.preference,
+        phoneNumber: this.props.user.phoneNumber,
     }
-
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -16,8 +15,7 @@ export default class CreateAccount extends Component {
             name: this.state.name,
             preference: this.state.preference,
             phoneNumber: this.state.phoneNumber,
-            affirmations: [],
-            googleId: this.props.googleId
+            googleId: this.props.user.googleId
          }
          await this.props.event(userInfo)
          this.props.history.push('/dashboard');
@@ -25,15 +23,17 @@ export default class CreateAccount extends Component {
     render() {
         return (
             <div>
-                Create Account
+                <h1>
+                    Account Settings
+                </h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>Your Name:
-                        <input name='name' placeholder='name' onChange={this.handleChange} />
+                        <input name='name' placeholder={this.props.user.name} onChange={this.handleChange} />
                     </label>
                     <label>Phone Number:
-                        <input name='phoneNumber' placeholder='1999999999' onChange={this.handleChange} />
+                        <input name='phoneNumber' placeholder={this.props.user.phoneNumber} onChange={this.handleChange} />
                     </label>
-                    <div>What motivations would you like?
+                    <div>Would you like to change your affirmation preference?
                         <label>
                             <input type='radio' name='preference' value='' onChange={this.handleChange} />all
                         </label>
