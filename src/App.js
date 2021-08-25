@@ -9,7 +9,7 @@ import './App.css';
 import Header from './Components/Header';
 import Dashboard from './Components/Dashboard';
 import About from './Components/About';
-import Main from './Components/Main';
+import Login from './Components/Login';
 import Settings from './Components/Settings';
 import CreateAccount from './Components/CreateAccount';
 import { signup } from './utils/signup';
@@ -59,7 +59,6 @@ export default class App extends Component {
   }
 
   render() {
-    console.log(this.state.user);
     return (
     <Router>
       <Header />
@@ -68,7 +67,7 @@ export default class App extends Component {
 
         <Route exact path= '/dashboard' render={(routerProps) => (this.state.token && this.state.user) ? <Dashboard {...routerProps} user={this.state.user}/> : <Redirect to='/'/> }/>
         <Route exact path= '/' render={(routerProps) => !this.state.token 
-          ? <Main {...routerProps} event={this.handleSetStates} /> 
+          ? <Login {...routerProps} event={this.handleSetStates} /> 
           : !this.state.user
           ? <CreateAccount {...routerProps} event={this.handleSetUserState} googleId={this.state.token.googleId}/>
           : <Redirect to='/dashboard'/>
