@@ -35,7 +35,7 @@ export default class Settings extends Component {
                     </label>
                     <div>Would you like to change your affirmation preference?
                         <label>
-                            <input type='radio' name='preference' value='all' onChange={this.handleChange} />all
+                            <input type='radio' name='preference' value='' onChange={this.handleChange} />all
                         </label>
                         <label>
                             <input type='radio' name='preference' value='wholesome' onChange={this.handleChange} />wholesome

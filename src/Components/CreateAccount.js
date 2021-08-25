@@ -35,7 +35,7 @@ export default class CreateAccount extends Component {
                     </label>
                     <div>What motivations would you like?
                         <label>
-                            <input type='radio' name='preference' value='all' onChange={this.handleChange} />all
+                            <input type='radio' name='preference' value='' onChange={this.handleChange} />all
                         </label>
                         <label>
                             <input type='radio' name='preference' value='wholesome' onChange={this.handleChange} />wholesome
