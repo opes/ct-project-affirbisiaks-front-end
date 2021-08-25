@@ -9,6 +9,7 @@ export default class Dashboard extends Component {
         <p>
           Welcome, {this.props.user.name}!
         </p>
+        <button>Send Affirmations</button>
         <Link to='/settings'><button>Settings</button></Link>
       </div>
     )
