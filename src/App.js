@@ -51,13 +51,20 @@ export default class App extends Component {
     });
   }
 
+  handleLogoutUser = async() => {
+    await this.setState({
+      token: '',
+      user: '',
+    });
+  }
+
   render() {
     console.log(this.state.user);
     return (
     <Router>
       <Header />
       <Switch>
-        <Route exact path= '/settings' render={(routerProps) => (this.state.token && this.state.user) ? <Settings {...routerProps} deleteUser={this.handleDeleteUser} event={this.handleUpdateUserState} user={this.state.user}/> : <Redirect to='/'/> }/>
+        <Route exact path= '/settings' render={(routerProps) => (this.state.token && this.state.user) ? <Settings {...routerProps} deleteUser={this.handleDeleteUser} logoutUser={this.handleLogoutUser} event={this.handleUpdateUserState} user={this.state.user}/> : <Redirect to='/'/> }/>
 
         <Route exact path= '/dashboard' render={(routerProps) => (this.state.token && this.state.user) ? <Dashboard {...routerProps} user={this.state.user}/> : <Redirect to='/'/> }/>
         <Route exact path= '/' render={(routerProps) => !this.state.token 

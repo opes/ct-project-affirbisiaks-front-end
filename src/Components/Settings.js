@@ -50,6 +50,7 @@ export default class Settings extends Component {
                     </div>
                     <button>Submit</button>
                 </form>
+                <button onClick={() => this.props.logoutUser()}>Logout</button>
                 <button onClick={() => this.props.deleteUser(this.props.user)}>Delete Account</button>
             </div>
         )
