@@ -27,20 +27,25 @@ export default class CreateAccount extends Component {
             <div>
                 Create Account
                 <form onSubmit={this.handleSubmit}>
-                    <label>
-                        <input name='name' placeholder='name' onChange={this.handleChange}></input>
+                    <label>Your Name:
+                        <input name='name' placeholder='name' onChange={this.handleChange} />
                     </label>
-                    <label>
-                    <input type='radio' name='preference' value='wholesome' onChange={this.handleChange}></input>
-                    </label>
-                    <label>
-                    <input type='radio' name='preference' value='motivational' onChange={this.handleChange}></input>
-                    </label>
-                    <label>
-                    <input type='radio' name='preference' value='mindfulness' onChange={this.handleChange}></input>
-                    </label>
-                    <label>
-                    <input name='phoneNumber' placeholder='phoneNumber' onChange={this.handleChange}></input>
+                    <div>What motivations would you like?
+                        <label>
+                            <input type='radio' name='preference' value='all' onChange={this.handleChange} />all
+                        </label>
+                        <label>
+                            <input type='radio' name='preference' value='wholesome' onChange={this.handleChange} />wholesome
+                        </label>
+                        <label>
+                            <input type='radio' name='preference' value='motivational' onChange={this.handleChange} />motivational
+                        </label>
+                        <label>
+                            <input type='radio' name='preference' value='mindful' onChange={this.handleChange} />mindful
+                        </label>
+                    </div>
+                    <label>Phone Number:
+                        <input name='phoneNumber' placeholder='1999999999' onChange={this.handleChange} />
                     </label>
                     <button>submit</button>
                 </form>
