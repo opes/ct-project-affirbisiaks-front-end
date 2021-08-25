@@ -24,7 +24,7 @@ export default class App extends Component {
     await this.setState({ token: profileObj });
 
     const userObj = await fetch(`https://affirbisiaks.herokuapp.com/api/v1/users/${profileObj.googleId}`);
-
+    
     const data = await userObj.json();
 
     await this.setState({ user: data })
@@ -43,7 +43,7 @@ export default class App extends Component {
       <Switch>
         <Route exact path= '/' render={(routerProps) => !this.state.token 
           ? <Main {...routerProps} event={this.handleSetStates} /> 
-          : this.state.user
+          : !this.state.user
           ? <CreateAccount {...routerProps} event={this.handleSetUserState} googleId={this.state.token.googleId}/>
           : <Dashboard {...routerProps} />
           } />
