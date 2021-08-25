@@ -14,12 +14,13 @@ import Settings from './Components/Settings';
 import CreateAccount from './Components/CreateAccount';
 import { signup } from './utils/signup';
 import { update } from './utils/update.js';
+import { deleteUser } from './utils/delete';
 
 export default class App extends Component {
 
   state = {
     token: '',
-    user: '', 
+    user: '',
   }
 
   handleSetStates = async (profileObj) => {
@@ -42,13 +43,28 @@ export default class App extends Component {
     await this.setState({ user })
   }
 
+  handleDeleteUser = async (userObj) => {
+    await deleteUser(userObj);
+    await this.setState({
+      token: '',
+      user: '',
+    });
+  }
+
+  handleLogoutUser = async() => {
+    await this.setState({
+      token: '',
+      user: '',
+    });
+  }
+
   render() {
     console.log(this.state.user);
     return (
     <Router>
       <Header />
       <Switch>
-        <Route exact path= '/settings' render={(routerProps) => (this.state.token && this.state.user) ? <Settings {...routerProps} event={this.handleUpdateUserState} user={this.state.user}/> : <Redirect to='/'/> }/>
+        <Route exact path= '/settings' render={(routerProps) => (this.state.token && this.state.user) ? <Settings {...routerProps} deleteUser={this.handleDeleteUser} logoutUser={this.handleLogoutUser} event={this.handleUpdateUserState} user={this.state.user}/> : <Redirect to='/'/> }/>
 
         <Route exact path= '/dashboard' render={(routerProps) => (this.state.token && this.state.user) ? <Dashboard {...routerProps} user={this.state.user}/> : <Redirect to='/'/> }/>
         <Route exact path= '/' render={(routerProps) => !this.state.token 
@@ -65,4 +81,3 @@ export default class App extends Component {
     );
   }
 }
-

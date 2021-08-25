@@ -20,6 +20,7 @@ export default class Settings extends Component {
          await this.props.event(userInfo)
          this.props.history.push('/dashboard');
     }
+
     render() {
         return (
             <div>
@@ -47,8 +48,10 @@ export default class Settings extends Component {
                             <input type='radio' name='preference' value='mindful' onChange={this.handleChange} />mindful
                         </label>
                     </div>
-                    <button>submit</button>
+                    <button>Submit</button>
                 </form>
+                <button onClick={() => this.props.logoutUser()}>Logout</button>
+                <button onClick={() => this.props.deleteUser(this.props.user)}>Delete Account</button>
             </div>
         )
     }
