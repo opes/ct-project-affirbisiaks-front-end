@@ -24,8 +24,8 @@ export default class CreateAccount extends Component {
     }
     render() {
         return (
-            <div>
-                Create Account
+            <div className='main'>
+                <h2>Create Account</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>Your Name:
                         <input name='name' placeholder='name' onChange={this.handleChange} />

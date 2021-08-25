@@ -23,10 +23,10 @@ export default class Settings extends Component {
 
     render() {
         return (
-            <div>
-                <h1>
+            <div className='main'>
+                <h2>
                     Account Settings
-                </h1>
+                </h2>
                 <form onSubmit={this.handleSubmit}>
                     <label>Your Name:
                         <input name='name' placeholder={this.props.user.name} onChange={this.handleChange} />
