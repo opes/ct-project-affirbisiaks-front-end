@@ -63,15 +63,23 @@ export default class App extends Component {
     <Router>
       <Header />
       <Switch>
-        <Route exact path= '/settings' render={(routerProps) => (this.state.token && this.state.user) ? <Settings {...routerProps} deleteUser={this.handleDeleteUser} logoutUser={this.handleLogoutUser} event={this.handleUpdateUserState} user={this.state.user}/> : <Redirect to='/'/> }/>
+        
+        <Route exact path= '/settings' render={(routerProps) => (this.state.token && this.state.user) 
+          ? <Settings {...routerProps} deleteUser={this.handleDeleteUser} logoutUser={this.handleLogoutUser} event={this.handleUpdateUserState} user={this.state.user}/> 
+          : <Redirect to='/'/> 
+        }/>
 
-        <Route exact path= '/dashboard' render={(routerProps) => (this.state.token && this.state.user) ? <Dashboard {...routerProps} user={this.state.user}/> : <Redirect to='/'/> }/>
+        <Route exact path= '/dashboard' render={(routerProps) => (this.state.token && this.state.user) 
+          ? <Dashboard {...routerProps} user={this.state.user}/> 
+          : <Redirect to='/'/> 
+        }/>
+
         <Route exact path= '/' render={(routerProps) => !this.state.token 
           ? <Login {...routerProps} event={this.handleSetStates} /> 
           : !this.state.user
           ? <CreateAccount {...routerProps} event={this.handleSetUserState} googleId={this.state.token.googleId}/>
           : <Redirect to='/dashboard'/>
-          } />
+        } />
 
         <Route exact path= '/about' component={About} />
         
