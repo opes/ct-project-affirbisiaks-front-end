@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 3px solid lavender;
+  border-bottom: 1px solid lavender;
 }
 
 .main {
