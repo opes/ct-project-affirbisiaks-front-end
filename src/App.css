@@ -1,3 +1,134 @@
-* {
-  background-color: darkslategrey;
+:root {
+  --pad: 1.2rem;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Kaisei+Tokumin:wght@400;500;700;800&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid lavender;
+}
+
+.main {
+  padding: var(--pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 2.4rem;
+  margin: var(--pad);
+}
+
+h2 {
+  font-family: 'DM Mono', monospace;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.2rem;
+  margin-top: var(--pad);
+  margin-bottom: var(--pad);
+  border-bottom: 1px solid lavender
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  padding-bottom: var(--pad);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1rem;
+  display: flex;
+}
+
+.text-input {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: var(--pad);
+}
+
+.text-input input {
+  align-self: center;
+  display: block;
+  width: 80%;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid lavender;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  margin: .5rem;
+  padding: .5rem;
+  color: darkblue;
+}
+
+.text-input input:hover {
+  box-shadow: 8px 8px darkviolet;
+}
+
+.text-input input:focus {
+  box-shadow: 8px 8px darkviolet;
+  outline: none;
+}
+
+input[type="radio"] {
+  display: inline;
+}
+
+.button, button{
+  align-self: center;
+  width: 80%;
+  height: 50px;
+  margin: var(--pad);
+  border-radius: 15px;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  color: lavender;
+  background-color: rgba(191, 85, 236, .2);
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: rgba(140, 20, 252, 1);
+}
+
+button:hover {
+  background-color:rgba(165, 55, 253, 1);
+  box-shadow: 8px 8px darkblue;
+  transform: translate(.05rem, .05rem);
+}
+
+.delete-button:hover {
+  background-color: magenta;
+  box-shadow: 8px 8px darkblue;
+  transform: translate(.05rem, .05rem);
+}
+
+button:active, .delete-button:active {
+  background-color: indigo;
+  box-shadow: 6px 6px darkblue;
+  transform: translate(.2rem, .2rem);
+}
+
+a {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
 }

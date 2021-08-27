@@ -24,34 +24,32 @@ export default class Settings extends Component {
     render() {
         return (
             <div className='main'>
-                <h2>
-                    Account Settings
-                </h2>
+                <h2>Account Settings</h2>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Your Name:
+                    <label className='text-input'>Your Name:
                         <input name='name' placeholder={this.props.user.name} onChange={this.handleChange} />
                     </label>
-                    <label>Phone Number:
+                    <label className='text-input'>Phone Number:
                         <input name='phoneNumber' placeholder={this.props.user.phoneNumber} onChange={this.handleChange} />
                     </label>
-                    <div>Would you like to change your affirmation preference?
+                    <div><p>Affirmation preference:</p>
                         <label>
-                            <input type='radio' name='preference' value='' onChange={this.handleChange} />all
+                            <input type='radio' name='preference' value='' onChange={this.handleChange} /><p>all</p>
                         </label>
                         <label>
-                            <input type='radio' name='preference' value='wholesome' onChange={this.handleChange} />wholesome
+                            <input type='radio' name='preference' value='wholesome' onChange={this.handleChange} /><p>wholesome</p>
                         </label>
                         <label>
-                            <input type='radio' name='preference' value='motivational' onChange={this.handleChange} />motivational
+                            <input type='radio' name='preference' value='motivational' onChange={this.handleChange} /><p>motivational</p>
                         </label>
                         <label>
-                            <input type='radio' name='preference' value='mindful' onChange={this.handleChange} />mindful
+                            <input type='radio' name='preference' value='mindful' onChange={this.handleChange} /><p>mindful</p>
                         </label>
                     </div>
                     <button>Submit</button>
                 </form>
                 <button onClick={() => this.props.logoutUser()}>Logout</button>
-                <button onClick={() => this.props.deleteUser(this.props.user)}>Delete Account</button>
+                <button className='delete-button' onClick={() => this.props.deleteUser(this.props.user)}>Delete Account</button>
             </div>
         )
     }
