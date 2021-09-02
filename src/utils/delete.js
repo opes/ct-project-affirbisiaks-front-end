@@ -1,6 +1,6 @@
 const url = 'https://affirbisiaks.herokuapp.com';
+
 export async function deleteUser(userInfo) {
-    console.log(userInfo);
     const data = await fetch(`${url}/api/v1/users/${userInfo.id}`, {
         method: 'DELETE',
         credentials: 'include', 

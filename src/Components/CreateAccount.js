@@ -18,9 +18,10 @@ export default class CreateAccount extends Component {
             phoneNumber: this.state.phoneNumber,
             affirmations: [],
             googleId: this.props.googleId
-         }
-         await this.props.event(userInfo)
-         this.props.history.push('/dashboard');
+        }
+
+        await this.props.event(userInfo)
+        this.props.history.push('/dashboard');
     }
     render() {
         return (

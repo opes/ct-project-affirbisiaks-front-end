@@ -74,6 +74,11 @@ export default class App extends Component {
           : <Redirect to='/'/> 
         }/>
 
+        {/**
+          Nesting ternaries can make logic hard to follow.
+          One is generally fine, but be careful not to fall into
+          the trap of "clever" coding.
+        */}
         <Route exact path= '/' render={(routerProps) => !this.state.token 
           ? <Login {...routerProps} event={this.handleSetStates} /> 
           : !this.state.user

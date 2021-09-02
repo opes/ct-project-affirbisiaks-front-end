@@ -8,6 +8,7 @@ import App from './App';
 //   expect(headerElement).toBeInTheDocument();
 // });
 
+// Well, at least you've got a test!
 describe('A simple test to please the githubz', () => {
   it('Does One plus One Equal Two', () => {
       const x = 1;

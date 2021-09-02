@@ -1,4 +1,5 @@
 const url = 'https://affirbisiaks.herokuapp.com';
+
 export async function signup(userInfo) {
     const data = await fetch(`${url}/api/v1/users`, {
         method: 'POST',

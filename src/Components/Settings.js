@@ -16,9 +16,9 @@ export default class Settings extends Component {
             preference: this.state.preference,
             phoneNumber: this.state.phoneNumber,
             googleId: this.props.user.googleId
-         }
-         await this.props.event(userInfo)
-         this.props.history.push('/dashboard');
+        }
+        await this.props.event(userInfo)
+        this.props.history.push('/dashboard');
     }
 
     render() {
